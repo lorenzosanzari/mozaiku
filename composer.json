@@ -1,6 +1,7 @@
 {
     "name": "lorenzosanzari/mozaiku",
     "description": "Plain PHP Template Inheritance Class",
+    "license": "MIT",
     "authors": [
         {
             "name": "Lorenzo Sanzari",

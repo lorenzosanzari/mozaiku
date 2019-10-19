@@ -3,11 +3,16 @@
 # Mozaiku
 ## Plain PHP Template Inheritance
 
-Inspired by the various hierarchical template engines like Twig or Blade, 
-Mozaiku offers the possibility of building hierarchical templates using simply **plain PHP** language.
+Inspired by several hierarchical template engines like Twig or Blade, 
+Mozaiku offers to you the possibility of building hierarchical templates using simply **plain PHP** language.
+It is a very simple and lightweight class, with very small footprint.
+
+# License
+
+Mozaiku is released under the [MIT](https://opensource.org/licenses/MIT) license.
 
 # Install via Composer
-If you are using Composer, you can run the following command:
+If you are using [Composer](https://getcomposer.org/), you can run the following command:
 ```
 composer require lorenzosanzari/mozaiku
 ```
@@ -30,7 +35,7 @@ In other words, in the child view, you only need to redefine the sections you wa
 # Sections
 In a layout, you can define a new section simply by writing:
 
-```
+```php
 <?php $this->section('menu'); ?>
      Menu section content ...
 <?php $this->endsection(); ?>
@@ -42,7 +47,7 @@ In the same layout it is not possible to define multiple sections with the same 
 # Parent section content
 In a section it is possible to insert a new content, but also to recall the content of the same section of the parent layout, through the directive:
 
-```
+```php
 <?php $this->section('title'); ?>
 
     Child title content
@@ -54,7 +59,7 @@ In a section it is possible to insert a new content, but also to recall the cont
 # Extending a parent layout
 
 Example:
-```
+```php
 <!-- theme.php -->
 <!DOCTYPE html>
 <html>
@@ -83,9 +88,10 @@ Example:
 ```
 
 **Warning**: the $this->extendsView('my_parent_view.php') directive MUST be placed at start of the child page!
+
 Rendering 'page.php' with Mozaiku, you will obtain the following output:
 
-```
+```php
 <!DOCTYPE html>
 <html>
     <head>
@@ -104,7 +110,7 @@ Rendering 'page.php' with Mozaiku, you will obtain the following output:
 If in your template you simply want to show the contents of a section 
 populated by child views, you can simply write:
 
-```
+```php
 <?php $this->showsection('my_section'); ?>
 ```
 
@@ -112,7 +118,7 @@ populated by child views, you can simply write:
 You can include some partial view in a section of your layout (or in any point, if your view is not a child view),
 simply by writing:
 
-```
+```php
 <?php $this->includeView('views/my_partial.php', $data); ?>
 ```
 
@@ -121,7 +127,7 @@ simply by writing:
 
 The render() function
 
-```
+```php
 $mozaiku = new Mozaiku();
 $data = [
 	//view data array...
@@ -137,7 +143,7 @@ Mozaiku allows you to push contents to named stacks which can be rendered
 at some point in your layout. 
 This is very useful to inject JavaScript or CSS tags or script required by your child views:
 
-```
+```php
 <!-- Stack use example -->
 <?php $this->push('head'); ?>
 <style>
@@ -154,20 +160,20 @@ This is very useful to inject JavaScript or CSS tags or script required by your 
 Render the stack:
 In your html layout:
 
-```
+```php
 <?php $this->stack('head'); ?>
 ```
 
 # Debug and strict mode
 You can use Mozaiku in debug mode to display debugging information 
 related to the status of the internal stacks of section overrides:
-```
+```php
 $mozaiku = new Mozaiku();
 $mozaiku->debug = true; //debug mode
 ```
 The strict mode will give you error messages about the optimal way to write
 contents within the views:
-```
+```php
 $mozaiku->strict_mode = true; //strict mode 
 ```
 For any further doubts, see the example files included in the project. ;-)

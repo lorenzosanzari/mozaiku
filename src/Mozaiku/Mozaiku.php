@@ -32,7 +32,7 @@ class Mozaiku {
     // API METHODS /////////////////////////////////////////////////////////////
 
     public function __construct() {
-        
+        //...
     }
 
     // -------------------------------------------------------------------------
@@ -164,7 +164,7 @@ class Mozaiku {
      */
     public function stack($stack) {
         if (isset($this->stacks[$stack])) {
-            echo "\n" . implode("", $this->stacks[$stack]) . "\n";
+            echo "\n" . implode("\n", $this->stacks[$stack]) . "\n";
         }
     }
 
@@ -234,7 +234,7 @@ class Mozaiku {
             $this->printDebug();
 
         /////////////////////////////
-        //Verifica saldo apri/chiudi blocchi
+        //Verify open/closed section balance
         if ($this->sections_op_cl_count > 0) {
             $this->err("N° " . $this->sections_op_cl_count . " not closed sections in '" . $file . "'");
         }

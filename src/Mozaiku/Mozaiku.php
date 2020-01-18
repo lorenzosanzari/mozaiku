@@ -286,7 +286,7 @@ class Mozaiku {
      * @throws Exception
      */
     protected function err($msg) {
-        throw new Exception('Mozaiku error: ' . $msg);
+        throw new \Exception('Mozaiku error: ' . $msg);
     }
 
     /**
